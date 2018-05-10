@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cf301d5a30ca6bd44a3d546770eaa96b
+timeCreated: 1525960359
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - uiCanvas: {instanceID: 0}
+  - stimulus: {instanceID: 0}
+  - feedbackTextPrefab: {fileID: 156148, guid: 00142ecf8b3472e4093f9d3b9a4fd597, type: 2}
+  - instructionsText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

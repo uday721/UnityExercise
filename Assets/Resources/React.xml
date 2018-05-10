@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session>
+  <settings>
+    <general gameType="React" shuffle="true" />
+    <react duration="1" guessTimeLimit="0.125" responseTimeLimit =".8" />
+  </settings>
+  <trials>
+    <trial delay="0.2" />
+    <trial delay="0.3" />
+    <trial delay="0.3" />
+    <trial delay="0.5" />
+    <trial delay="0.5" />
+    <trial delay="0.5" />
+    <trial delay="1.0" />
+    <trial delay="1.0" />
+    <trial delay="1.0" />
+  </trials>
+</session>
