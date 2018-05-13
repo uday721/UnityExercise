@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 	void Start()
 	{
 		// Assign the game we want to play.
-		activeGame = gamesList[0];
+		activeGame = gamesList[1];
 		// Start the game session by giving it a Session file.
 		activeGame.StartSession(activeGame.sessionFiles[0]);
 		// Assign the active game to the Input controller.

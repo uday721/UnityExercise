@@ -19,6 +19,9 @@ public static class SessionUtil
 			case GameType.React:
 				return new ReactTrial(data, elem);
 
+            case GameType.ReactToColor:
+                return new ReactTrial(data, elem);
+
 			default:
 				return new Trial(data, elem);
 		}
@@ -34,6 +37,9 @@ public static class SessionUtil
 		{
 			case GameType.React:
 				return XMLUtil.ELEM_REACT;
+
+            case GameType.ReactToColor:
+                return XMLUtil.ELEM_REACTTOCOLOR;
 
 			default:
 				return string.Empty;

@@ -26,7 +26,8 @@ public static class XMLUtil
 	#region ELEM CONSTANTS
 
 	// Gametype elements.
-	public const string ELEM_REACT = "react";	
+	public const string ELEM_REACT = "react";
+    public const string ELEM_REACTTOCOLOR = "reacttocolor";	
 
 	// General elements.
 	const string ELEM_SESSIONS = "sessions";
@@ -105,6 +106,10 @@ public static class XMLUtil
 				case ELEM_REACT:
 					sData.gameData = new ReactData(n as XmlElement);
 					break;
+
+                case ELEM_REACTTOCOLOR:
+                    sData.gameData = new ReactToColorData(n as XmlElement);
+                    break;
 
 				default:
 					break;

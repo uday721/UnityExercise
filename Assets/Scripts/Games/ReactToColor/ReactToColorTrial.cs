@@ -29,7 +29,7 @@ public class ReactToColorTrial : Trial
     {
         base.ParseGameSpecificVars(n, session);
 
-        ReactData data = (ReactData)(session.gameData);
+        ReactToColorData data = (ReactToColorData)(session.gameData);
         if (!XMLUtil.ParseAttribute(n, ReactData.ATTRIBUTE_DURATION, ref duration, true))
         {
             duration = data.GeneratedDuration;
