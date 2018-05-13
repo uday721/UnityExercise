@@ -67,6 +67,10 @@ public class InputController : MonoBehaviour
 		{
 			activeGame.PlayerResponded(KeyCode.Space, CalculateInputTime(ticksStarted, DateTime.UtcNow.Ticks));
 		}
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            activeGame.PlayerResponded(KeyCode.Mouse0, CalculateInputTime(ticksStarted, DateTime.UtcNow.Ticks));
+        }
 	}
 
 

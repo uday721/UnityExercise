@@ -4,14 +4,28 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Linq;
 
+/// <summary>
+/// Contains general Game data for the ReactToColor gametype.
+/// </summary
 public class ReactToColorData : GameData
 {
     const string ATTRIBUTE_GUESS_TIMELIMIT = "guessTimeLimit";
     const string ATTRIBUTE_RESPONSE_TIMELIMIT = "responseTimeLimit";
     public const string ATTRIBUTE_DURATION = "duration";
 
+    /// <summary>
+	/// The amount of time that needs to pass before the player can respond without being penalized.
+	/// </summary>
     private float guessTimeLimit = 0;
+    /// <summary>
+	/// The amount of time that the user has to respond; 
+	/// Starts when input becomes enabled during a Trial. 
+	/// Responses that fall within this time constraint will be marked as Successful.
+	/// </summary>
     private float responseTimeLimit = 0;
+    /// <summary>
+	/// The visibility Duration for the Stimulus.
+	/// </summary>
     private float duration = 0;
 
     #region ACCESSORS
