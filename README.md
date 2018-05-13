@@ -49,14 +49,14 @@ In this game you should be able to:
 
 For your submission, extend this README documenting the rules of the new game, how the code works, how scoring works in the new game, and any other interesting or useful things you can think of for us to take into consideration. Then zip the git repository and send it to us.
 
-#React To Color (New Game)
+# React To Color (New Game)
 
 The new game, React To Color is game similar to Original game React with some extra features.
-**How to play** - The main scene is set to run the new game ReactToColor, so just hit the play button in the unity editor.
-**Goal** - The player has to respond to the green stimulus and abstain from red stimulus.
-**Code Structure** - Necessary parameters for implementing  the extra features is given by xml file, the logic is implemented in ReactTOColor.cs
-**Design changes and Future Implementations** - I changed the positive stimulus color from white to green, reason is green and red are more clearly differentiable than white and red. The stimulus position is at random(conditions apply), so I think using mouse click rather than key board to record response would be more interactive and immersive.
+- **How to play** - The main scene is set to run the new game ReactToColor, so just hit the play button in the unity editor.
+- **Goal** - The player has to respond to the green stimulus and abstain from red stimulus.
+- **Code Structure** - Necessary parameters for implementing  the extra features is given by xml file, the logic is implemented in ReactTOColor.cs
+- **Design changes and Future Implementations** - I changed the positive stimulus color from white to green, reason is green and red are more clearly differentiable than white and red. The stimulus position is at random(conditions apply), so I think using mouse click rather than key board to record response would be more interactive and immersive.
 
-#Thank you
+# Thank you
 
 
