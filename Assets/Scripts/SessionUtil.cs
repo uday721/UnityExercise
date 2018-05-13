@@ -20,7 +20,7 @@ public static class SessionUtil
 				return new ReactTrial(data, elem);
 
             case GameType.ReactToColor:
-                return new ReactTrial(data, elem);
+                return new ReactToColorTrial(data, elem);
 
 			default:
 				return new Trial(data, elem);

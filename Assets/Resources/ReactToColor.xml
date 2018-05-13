@@ -5,14 +5,14 @@
     <reacttocolor duration="1" guessTimeLimit="0.125" responseTimeLimit =".8" />
   </settings>
   <trials>
-    <trial delay="0.2" />
-    <trial delay="0.3" />
-    <trial delay="0.3" />
-    <trial delay="0.5" />
-    <trial delay="0.5" />
-    <trial delay="0.5" />
-    <trial delay="1.0" />
-    <trial delay="1.0" />
-    <trial delay="1.0" />
-  </trials>
+    <trial delay="0.2" isRed = "true"  isRandomPosition = "false"/>
+    <trial delay="0.3" isRed = "false" isRandomPosition = "false"/>
+    <trial delay="0.3" isRed = "false" isRandomPosition = "true"/>
+    <trial delay="0.5" isRed = "true"  isRandomPosition = "true"/>
+    <trial delay="0.5" isRed = "false" isRandomPosition = "false"/>
+    <trial delay="0.5" isRed = "true"  isRandomPosition = "true"/>
+    <trial delay="1.0" isRed = "true"  isRandomPosition = "false"/>
+    <trial delay="1.0" isRed = "false" isRandomPosition = "true"/>
+    <trial delay="1.0" isRed = "true"  isRandomPosition = "true"/>
+  </trials>                   
 </session>

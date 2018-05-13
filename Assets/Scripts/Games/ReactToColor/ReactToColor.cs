@@ -10,6 +10,7 @@ public class ReactToColor : GameBase
     const string FINISHED = "FINISHED!";
     const string RESPONSE_GUESS = "No Guessing!";
     const string RESPONSE_CORRECT = "Good!";
+    const string RESPONSE_INCORRECT = "Bad!";
     const string RESPONSE_TIMEOUT = "Missed it!";
     const string RESPONSE_SLOW = "Too Slow!";
     Color RESPONSE_COLOR_GOOD = Color.green;
@@ -19,6 +20,9 @@ public class ReactToColor : GameBase
     public GameObject stimulus;
     public GameObject feedbackTextPrefab;
     public Text instructionsText;
+
+    public Vector2 minimumCoordinates = new Vector2(0, 0);
+    public Vector2 maximumCoordinates = new Vector2(100, 100);
 
     public override GameBase StartSession(TextAsset sessionFile)
     {
@@ -46,18 +50,49 @@ public class ReactToColor : GameBase
     protected virtual IEnumerator DisplayStimulus(Trial t)
     {
         GameObject stim = stimulus;
+        //using initial local position of stim as constant position
+        Vector2 initialPosition = stim.transform.localPosition;
+
         stim.SetActive(false);
+        //check if stim position is random
+        if (t.isRandomPosition)
+        {
+            stim.transform.localPosition = new Vector2(RandomPositionX(), RandomPositionY());
+        }
+        else
+        {
+            stim.transform.localPosition = initialPosition;
+        }
+        //check if stim color is red
+        if (t.isRed)
+        {
+            stim.GetComponent<Image>().color = Color.red;
+        }
+        else
+        {
+            stim.GetComponent<Image>().color = Color.green;
+        }
 
         yield return new WaitForSeconds(t.delay);
 
         StartInput();
         stim.SetActive(true);
 
-        yield return new WaitForSeconds(((ReactTrial)t).duration);
+        yield return new WaitForSeconds(((ReactToColorTrial)t).duration);
         stim.SetActive(false);
         EndInput();
 
         yield break;
+    }
+
+    private float RandomPositionY()
+    {
+        return UnityEngine.Random.Range(minimumCoordinates.y, maximumCoordinates.y);
+    }
+
+    private float RandomPositionX()
+    {
+        return UnityEngine.Random.Range(minimumCoordinates.x, maximumCoordinates.x);
     }
 
     protected override void FinishedSession()
@@ -89,6 +124,12 @@ public class ReactToColor : GameBase
             DisplayFeedback(RESPONSE_TIMEOUT, RESPONSE_COLOR_BAD);
             GUILog.Log("FAIL! No Response");
         }
+        else if(time == 0 && t.isRed)
+        {
+            r.success = true;
+            DisplayFeedback(RESPONSE_CORRECT, RESPONSE_COLOR_GOOD);
+            GUILog.Log("Correct! responseTime = {0}", time);
+        }
         else
         {
             if (IsGuessResponse(time))
@@ -96,12 +137,17 @@ public class ReactToColor : GameBase
                 DisplayFeedback(RESPONSE_GUESS, RESPONSE_COLOR_BAD);
                 GUILog.Log("Fail! Guess response! responseTime = {0}", time);
             }
-            else if(IsValidResponse(time))
+            else if(IsValidResponse(time) && !t.isRed)
             {
                 DisplayFeedback(RESPONSE_CORRECT, RESPONSE_COLOR_GOOD);
                 r.success = true;
                 r.accuracy = GetAccuracy(t, time);
                 GUILog.Log("Success! responseTime = {0}", time);
+            }
+            else if (IsValidResponse(time) && t.isRed)
+            {
+                DisplayFeedback(RESPONSE_INCORRECT, RESPONSE_COLOR_BAD);
+                GUILog.Log("Fail! Incorrect response! responseTime = {0}", time);
             }
             else
             {
