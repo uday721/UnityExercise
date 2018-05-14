@@ -44,7 +44,11 @@ public class ReactToColor : GameBase
     public Vector2 minimumCoordinates = new Vector2(0, 0);
     public Vector2 maximumCoordinates = new Vector2(100, 100);
     /// <summary>
-    /// Helps to change the range in the editor
+    /// r edit the fixed co-ordinates in editor
+    /// </summary>
+    public Vector2 fixedCoordinates = new Vector2(50, 50);
+    /// <summary>
+    /// for mouse input
     /// </summary>
     public Boolean isClickable = false;
 
@@ -85,8 +89,7 @@ public class ReactToColor : GameBase
     protected virtual IEnumerator DisplayStimulus(Trial t)
     {
         GameObject stim = stimulus;
-        //using initial local position of stim as constant position
-        Vector2 initialPosition = stim.transform.localPosition;
+        
         stim.SetActive(false);
         //check if stim position is random
         if (t.isRandomPosition)
@@ -95,7 +98,7 @@ public class ReactToColor : GameBase
         }
         else
         {
-            stim.transform.localPosition = initialPosition;
+            stim.transform.localPosition = fixedCoordinates;
         }
         //check if stim color is red
         if (t.isRed)
@@ -182,7 +185,7 @@ public class ReactToColor : GameBase
     {
         TrialResult r = new TrialResult(t);
         r.responseTime = time;
-        if (time == 0)
+        if (time == 0 && !t.isRed)
         {
             DisplayFeedback(RESPONSE_TIMEOUT, RESPONSE_COLOR_BAD);
             GUILog.Log("FAIL! No Response");
